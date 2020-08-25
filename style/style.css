@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    background-color: #28223F;
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    font-size: 20px;
+    padding: 60px;
+    font-family: Montserrat, sans-serif;
+    background-color: #222;
+    text-align: center;
+    color: #B3B8CD;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color:#231E39;
+}
+
+p {
+    font-family: sans-serif;
+    text-align: justify;
+    color:#B3B8CD;
+}
+
+* {
+    box-sizing: border-box;
+ }
+
+#more, #more1, #more2 {
+    display: none;
+}
+
+#content {
+    float: left;
+    width: 75%;
+}
+ 
+aside {
+    float: right;
+    padding-left: 20px;
+    width: 24%;
+}
+ 
+main {
+    padding: 20px;
+    overflow: auto;
+}
+
+button {
+     background-color:#222 ;
+     color: #B3B8CD;
+}
+
+.card-container {
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+  
+}
+
+aside .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+    padding: 7px;
+    width: 100px;
+}
+
+button.primary {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+}
+
+button.primary.ghost {
+	background-color: transparent;
+	color: #02899C;
+}
+
+.aboutus {
+	background-color: #1F1A36;
+    text-align: left;
+    padding: 15px;
+	margin-top: 30px;
+}
+
+.skills ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skills ul li {
+	border: 1px solid #2D2747;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 7px 7px 0;
+	padding: 7px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+}
+
+header {
+    display: inline;
+ }
+
+ footer p {
+    text-align: center;
+ }
+
+ h2 {
+    font-family: Montserrat;
+    color: #B3B8CD;
+ }
+
+h3 {
+    margin: 10px 0;
+    font-family: sans-serif;
+}
+
+h5 {
+	margin: 5px 0;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+.aboutus p{
+    text-align: left;
+    font-family: sans-serif;
+}
+
+aside p{
+    text-align: center;
+}
+ 
+@media screen and (max-width: 1000px){
+    #content, aside {
+       width: 100%;
+       padding: 0px;
+    }
+ }
+
+.pagination {
+    display: inline-block;
+    padding-left: 20px;
+}
+  
+.pagination a {
+    color: #B3B8CD;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #222;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
+}
+  
+ 
+.pagination a:hover:not(.active) {
+      background-color: #ddd;
+}
+  
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+  
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
