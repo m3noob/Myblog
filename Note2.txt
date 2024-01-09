@@ -1,0 +1,14 @@
+STRING = "trivy"
+
+for (job in Jenkins.instance.getAllItems(Job.class)) {
+    for (build in job.builds) {
+        try {
+            def log = build.log
+            if (log.contains(STRING)) {
+                println "${job.fullName}: ${build.id}"
+            }
+        } catch (Exception e) {
+            println "Error processing ${job.fullName}: ${build.id} - ${e.message}"
+        }
+    }
+}
