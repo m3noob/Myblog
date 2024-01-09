@@ -1,0 +1,21 @@
+STRING = "trivy"
+FOLDER_NAME = "pegadaian-poc"
+
+def folder = Jenkins.instance.getItemByFullName(FOLDER_NAME, hudson.model.AbstractItem.class)
+
+if (folder instanceof com.cloudbees.hudson.plugins.folder.Folder) {
+    folder.getAllJobs().each { job ->
+        for (build in job.builds) {
+            try {
+                def log = build.log
+                if (!log.contains(STRING)) {
+                    println "${job.fullName}: ${build.id}"
+                }
+            } catch (Exception e) {
+                println "Error processing ${job.fullName}: ${build.id} - ${e.message}"
+            }
+        }
+    }
+} else {
+    println "Folder not found: $FOLDER_NAME"
+}
