@@ -1,18 +1,28 @@
-Jenkins.instance.items.each { job ->
-    println "Job: ${job.fullName}"
+def folderPath = '/path/to/your/folder' // Replace with the actual path to your folder
 
-    job.builds.each { build ->
-        def result = build.result ?: 'RUNNING'
-        println "\tBuild #${build.number}, Result: $result"
+def folder = Jenkins.instance.getItemByFullName(folderPath)
 
-        def buildStages = build.getAction(jenkins.model.BuildStages)
-        if (buildStages != null) {
-            def stageNodes = buildStages.getStages()
-            if (stageNodes != null) {
-                stageNodes.each { stageNode ->
-                    println "\t\tStage: ${stageNode.name}, Status: ${stageNode.getStatus()}"
+if (folder) {
+    println "Folder: ${folder.fullName}"
+
+    folder.items.each { job ->
+        println "\tJob: ${job.fullName}"
+
+        job.builds.each { build ->
+            def result = build.result ?: 'RUNNING'
+            println "\t\tBuild #${build.number}, Result: $result"
+
+            def buildStages = build.getAction(jenkins.model.BuildStages)
+            if (buildStages != null) {
+                def stageNodes = buildStages.getStages()
+                if (stageNodes != null) {
+                    stageNodes.each { stageNode ->
+                        println "\t\t\tStage: ${stageNode.name}, Status: ${stageNode.getStatus()}"
+                    }
                 }
             }
         }
     }
+} else {
+    println "Folder not found!"
 }
