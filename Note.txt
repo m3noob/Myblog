@@ -1,28 +1,10 @@
-def folderPath = '/path/to/your/folder' // Replace with the actual path to your folder
+STRING = "trivy"
 
-def folder = Jenkins.instance.getItemByFullName(folderPath)
-
-if (folder) {
-    println "Folder: ${folder.fullName}"
-
-    folder.items.each { job ->
-        println "\tJob: ${job.fullName}"
-
-        job.builds.each { build ->
-            def result = build.result ?: 'RUNNING'
-            println "\t\tBuild #${build.number}, Result: $result"
-
-            def buildStages = build.getAction(jenkins.model.BuildStages)
-            if (buildStages != null) {
-                def stageNodes = buildStages.getStages()
-                if (stageNodes != null) {
-                    stageNodes.each { stageNode ->
-                        println "\t\t\tStage: ${stageNode.name}, Status: ${stageNode.getStatus()}"
-                    }
-                }
-            }
-        }
+for (job in Jenkins.instance.getAllItems(Job.class)) {
+  for (build in job.builds) {
+    def log = build.log
+    if (log.contains(STRING)) {
+      println "${job.name}: ${build.id}"
     }
-} else {
-    println "Folder not found!"
+  }
 }
