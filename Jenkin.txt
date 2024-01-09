@@ -1,0 +1,10 @@
+STRING = "trivy"
+
+for (job in Jenkins.instance.getAllItems(Job.class)) {
+  for (build in job.builds) {
+    def log = build.log
+    if (!log.contains(STRING)) {
+      println "${job.name}: ${build.id}"
+    }
+  }
+}
