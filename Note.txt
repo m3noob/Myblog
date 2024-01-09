@@ -1,0 +1,18 @@
+Jenkins.instance.items.each { job ->
+    println "Job: ${job.fullName}"
+
+    job.builds.each { build ->
+        def result = build.result ?: 'RUNNING'
+        println "\tBuild #${build.number}, Result: $result"
+
+        def buildStages = build.getAction(jenkins.model.BuildStages)
+        if (buildStages != null) {
+            def stageNodes = buildStages.getStages()
+            if (stageNodes != null) {
+                stageNodes.each { stageNode ->
+                    println "\t\tStage: ${stageNode.name}, Status: ${stageNode.getStatus()}"
+                }
+            }
+        }
+    }
+}
